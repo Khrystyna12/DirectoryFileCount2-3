@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="DirectoryFileCount.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        >
+    <Grid Name="MainGrid" Height="Auto">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="70*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Content="Add request" Command="{Binding AddDirectoryFileCommand}" Grid.Row="0"/>
+        <Button Grid.Row="7" Grid.Column="0" Content="Back to Sign In" HorizontalAlignment="Center" VerticalAlignment="Center" Width="225" Command="{Binding SignInCommand}" Grid.ColumnSpan="2"/>
+        <ListBox Grid.Row="1"  ItemsSource="{Binding DirectoryFiles}" SelectedItem="{Binding SelectedDirectoryFile}" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="Auto" Margin="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock FontSize="18" Text="{Binding Path=Title, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="DirectoryFileCount.Views.Request.RequestConfigurationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:controls="clr-namespace:DirectoryFileCount.Tools.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+        
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <controls:LabelAndTextControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Caption="Title" Margin="5"
+                                Text="{Binding Title, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <controls:LabelAndTextControl Grid.Row="2" Grid.Column="0" Caption="Path" Margin="5" IsEnabled="False"
+                                Text="{Binding Path, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <controls:LabelAndTextControl Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Caption="Result" Margin="5" IsEnabled="False"
+                                Text="{Binding Result, UpdateSourceTrigger=PropertyChanged}"/>
+
+    </Grid>
+</UserControl>
