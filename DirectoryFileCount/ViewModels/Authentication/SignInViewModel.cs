@@ -4,8 +4,8 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using DirectoryFileCount.DBModels;
 using DirectoryFileCount.Managers;
-using DirectoryFileCount.Models;
 using DirectoryFileCount.Properties;
 using DirectoryFileCount.Tools;
 

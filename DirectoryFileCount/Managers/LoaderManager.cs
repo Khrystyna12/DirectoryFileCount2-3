@@ -8,6 +8,7 @@ namespace DirectoryFileCount.Managers
         #region static
         private static readonly object Lock = new object();
         private static LoaderManager _instance;
+
         internal static LoaderManager Instance
         {
             get
@@ -22,15 +23,19 @@ namespace DirectoryFileCount.Managers
         }
         #endregion
         private ILoaderOwner _loaderOwner;
+
         internal void Initialize(ILoaderOwner loaderOwner)
         {
             _loaderOwner = loaderOwner;
         }
+
         internal void ShowLoader()
         {
             _loaderOwner.LoaderVisibility = Visibility.Visible;
             _loaderOwner.IsEnabled = false;
+
         }
+
         internal void HideLoader()
         {
             _loaderOwner.LoaderVisibility = Visibility.Hidden;

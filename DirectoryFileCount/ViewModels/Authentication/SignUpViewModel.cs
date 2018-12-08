@@ -6,8 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using DirectoryFileCount.DBModels;
 using DirectoryFileCount.Managers;
-using DirectoryFileCount.Models;
 using DirectoryFileCount.Properties;
 using DirectoryFileCount.Tools;
 
@@ -156,6 +156,7 @@ namespace DirectoryFileCount.ViewModels.Authentication
             if (result)
                 NavigationManager.Instance.Navigate(ModesEnum.Main);
         }
+
         private bool SignUpCanExecute(object obj)
         {
             return !String.IsNullOrEmpty(_login) &&

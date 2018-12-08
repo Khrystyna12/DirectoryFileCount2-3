@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
-using System.Windows.Forms;
-using DirectoryFileCount.Managers;
 using System.Runtime.CompilerServices;
+using DirectoryFileCount.Managers;
 using DirectoryFileCount.Models;
 using DirectoryFileCount.Properties;
 
@@ -10,37 +9,37 @@ namespace DirectoryFileCount.ViewModels
     internal class RequestConfigurationViewModel : INotifyPropertyChanged
     {
         #region Fields
-        private readonly Request _currentDirectoryFile;
+        private readonly RequestUIModel _currentRequest;
         #endregion
-        
-        #region Properties
 
+        #region Properties
+        
         public string Title
         {
-            get { return _currentDirectoryFile.Title; }
+            get { return _currentRequest.Title; }
             set
             {
-                _currentDirectoryFile.Title = value;
+                _currentRequest.Title = value;
                 OnPropertyChanged();
             }
         }
         public string Path
         {
-            get { return _currentDirectoryFile.Path; }
+            get { return _currentRequest.Path; }
             set { }
         }
         public string Result
         {
-            get { return _currentDirectoryFile.Result; }
+            get { return _currentRequest.Result; }
         }
         #endregion
 
-        
+
 
         #region Constructor
-        public RequestConfigurationViewModel(Request directoryfile)
+        public RequestConfigurationViewModel(RequestUIModel request)
         {
-            _currentDirectoryFile = directoryfile;
+            _currentRequest = request;
         }
         #endregion
         #region EventsAndHandlers
@@ -49,7 +48,6 @@ namespace DirectoryFileCount.ViewModels
         [NotifyPropertyChangedInvocator]
         internal virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            DBManager.UpdateUser(StationManager.CurrentUser);
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
