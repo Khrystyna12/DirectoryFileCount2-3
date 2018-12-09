@@ -1,6 +1,6 @@
-﻿using DirectoryFileCount.DBAdapter;
-using DirectoryFileCount.DBModels;
+﻿using DirectoryFileCount.DBModels;
 using DirectoryFileCount.Tools;
+using DirectoryFileCount.ServiceInterface;
 
 namespace DirectoryFileCount.Managers
 {
@@ -8,22 +8,22 @@ namespace DirectoryFileCount.Managers
     {
         public static bool UserExists(string login)
         {
-            return EntityWrapper.UserExists(login);
+            return RequestServiceWrapper.UserExists(login);
         }
 
         public static User GetUserByLogin(string login)
         {
-            return EntityWrapper.GetUserByLogin(login);
+            return RequestServiceWrapper.GetUserByLogin(login);
         }
 
         public static void AddUser(User user)
         {
-            EntityWrapper.AddUser(user);
+            RequestServiceWrapper.AddUser(user);
         }
 
         internal static User CheckCachedUser(User userCandidate)
         {
-            var userInStorage = EntityWrapper.GetUserByGuid(userCandidate.Guid);
+            var userInStorage = RequestServiceWrapper.GetUserByGuid(userCandidate.Guid);
             if (userInStorage != null && userInStorage.CheckPassword(userCandidate))
                 return userInStorage;
             return null;
@@ -31,12 +31,12 @@ namespace DirectoryFileCount.Managers
         
         public static void DeleteRequest(Request selectedRequest)
         {
-            EntityWrapper.DeleteRequest(selectedRequest);
+            RequestServiceWrapper.DeleteRequest(selectedRequest);
         }
 
         public static void AddRequest(Request request)
         {
-            EntityWrapper.AddRequest(request);
+            RequestServiceWrapper.AddRequest(request);
         }
     }
 }

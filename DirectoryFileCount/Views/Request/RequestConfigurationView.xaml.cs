@@ -1,17 +1,18 @@
-﻿using DirectoryFileCount.ViewModels;
+﻿using DirectoryFileCount.Models;
+using DirectoryFileCount.ViewModels;
 
 namespace DirectoryFileCount.Views.Request
 {
     /// <summary>
-    /// Interaction logic for DirectoryFileConfigurationView.xaml
+    /// Interaction logic for RequestConfigurationView.xaml
     /// </summary>
     public partial class RequestConfigurationView
     {
-        public RequestConfigurationView(Models.Request directoryfile)
+        public RequestConfigurationView(RequestUIModel request)
         {
             InitializeComponent();
-            var directoryfileModel = new RequestConfigurationViewModel(directoryfile);
-            DataContext = directoryfileModel;
+            var requestModel = new RequestConfigurationViewModel(request);
+            DataContext = requestModel;
         }
     }
 }

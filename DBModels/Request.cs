@@ -3,21 +3,33 @@ using System.Data.Entity.ModelConfiguration;
 using System.IO;
 using System.Windows.Forms;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace DirectoryFileCount.DBModels
 {
+    [DataContract(IsReference = true)]
     public class Request
     {
         #region Fields
+        [DataMember]
         private Guid _guid;
+        [DataMember]
         private string _title;
+        [DataMember]
         private string _path;
+        [DataMember]
         private int _numberOfFiles;
+        [DataMember]
         private int _numberOfDirectories;
+        [DataMember]
         private long _sizeOfFiles;
+        [DataMember]
         private string _data;
+        [DataMember]
         private string _result;
+        [DataMember]
         private Guid _userGuid;
+        [DataMember]
         private User _user;
         #endregion
 

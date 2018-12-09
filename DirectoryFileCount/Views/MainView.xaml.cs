@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using DirectoryFileCount.Models;
 using DirectoryFileCount.ViewModels;
 using DirectoryFileCount.Views.Request;
 
@@ -10,7 +11,7 @@ namespace DirectoryFileCount.Views
     /// </summary>
     public partial class MainView
     {
-        private MainViewModel _mainWindowViewModel;
+        private MainViewViewModel _mainWindowViewModel;
         private RequestConfigurationView _currentRequestConfigurationView;
 
         public MainView()
@@ -22,25 +23,25 @@ namespace DirectoryFileCount.Views
         private void Initialize()
         {
             Visibility = Visibility.Visible;
-            _mainWindowViewModel = new MainViewModel();
-            _mainWindowViewModel.DirectoryFileChanged += OnDirectoryFileChanged;
+            _mainWindowViewModel = new MainViewViewModel();
+            _mainWindowViewModel.RequestChanged += OnRequestChanged;
             DataContext = _mainWindowViewModel;
         }
 
-        private void OnDirectoryFileChanged(Models.Request directoryfile)
+        private void OnRequestChanged(RequestUIModel request)
         {
             if (_currentRequestConfigurationView == null)
             {
-                _currentRequestConfigurationView = new RequestConfigurationView(directoryfile);
+                _currentRequestConfigurationView = new RequestConfigurationView(request);
                 MainGrid.Children.Add(_currentRequestConfigurationView);
                 Grid.SetRow(_currentRequestConfigurationView, 0);
                 Grid.SetRowSpan(_currentRequestConfigurationView, 2);
                 Grid.SetColumn(_currentRequestConfigurationView, 1);
             }
             else
-                _currentRequestConfigurationView.DataContext = new RequestConfigurationViewModel(directoryfile);
+                _currentRequestConfigurationView.DataContext = new RequestConfigurationViewModel(request);
 
         }
-
+        
     }
 }

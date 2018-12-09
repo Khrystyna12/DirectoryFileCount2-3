@@ -15,10 +15,9 @@
             <RowDefinition Height="20"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Content="Add request" Command="{Binding AddDirectoryFileCommand}" Grid.Row="0"/>
-        <Button Grid.Row="7" Grid.Column="0" Content="Back to Sign In" HorizontalAlignment="Center" VerticalAlignment="Center" Width="225" Command="{Binding SignInCommand}" Grid.ColumnSpan="2"/>
-        <ListBox Grid.Row="1"  ItemsSource="{Binding DirectoryFiles}" SelectedItem="{Binding SelectedDirectoryFile}" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="Auto" Margin="2">
-            <ListBox.ItemTemplate>
+        <Button Content="Add Request" Command="{Binding AddRequestCommand}" Grid.Row="0"/>
+        <ListBox Grid.Row="1"  ItemsSource="{Binding Requests}" SelectedItem="{Binding SelectedRequest}" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="Auto" Margin="2">
+        <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
                         <TextBlock FontSize="18" Text="{Binding Path=Title, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -26,6 +25,6 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
+        
     </Grid>
 </UserControl>

@@ -2,20 +2,30 @@
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
 using DirectoryFileCount.Tools;
+using System.Runtime.Serialization;
 
 namespace DirectoryFileCount.DBModels
 {
     [Serializable]
+    [DataContract(IsReference = true)]
     public class User
     {
         #region Fields
+        [DataMember]
         private Guid _guid;
+        [DataMember]
         private string _firstName;
+        [DataMember]
         private string _lastName;
+        [DataMember]
         private string _email;
+        [DataMember]
         private string _login;
+        [DataMember]
         private string _password;
+        [DataMember]
         private DateTime _lastLoginDate;
+        [DataMember]
         private List<Request> _requests;
         #endregion
 
@@ -144,7 +154,7 @@ namespace DirectoryFileCount.DBModels
                 string res2 = Encrypting.GetMd5HashForString(password);
                 return _password == res2;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
